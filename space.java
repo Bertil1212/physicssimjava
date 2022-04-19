@@ -20,13 +20,15 @@ public class space {
         //get corners (starting at top right 0 radians is up)
         c.points.clear();
         for(int i = 1; i < 4; i++){
-            c.points.add(new point(cornerdistance * Math.cos((Math.PI/2) * i + c.rotation) + c.x, cornerdistance * Math.sin((Math.PI/2) * i + c.rotation) + c.x));
-            StdDraw.setPenColor(new Color(255,255,255));
-            StdDraw.setPenRadius(100);
+            c.points.add(new point(cornerdistance * Math.cos((Math.PI/2) * i) + c.rotation + c.x, cornerdistance * Math.sin((Math.PI/2) * i) + c.y));
+            System.out.println(cornerdistance);
+            StdDraw.setPenColor(new Color(0,0,0));
+            StdDraw.setPenRadius(1);
             StdDraw.point(c.points.get(i-1).x, c.points.get(i-1).y);
         }
 
         StdDraw.setPenColor(new Color(255,0,0));
+        
         StdDraw.filledSquare(c.x, c.y, c.height/2);
 
         
@@ -44,9 +46,9 @@ public class space {
         cube cub = new cube(30f, 30f, 5f, new Color(255, 255, 0), 40f, 60f, 0f);
         gravity(cub);
 
-
+        StdDraw.show();
         long lasttime = 0;
-        while(true){
+        while(lasttime == 2){
             if(System.currentTimeMillis() - lasttime > tickdelay){
                 lasttime = System.currentTimeMillis();
                 //StdDraw.clear();
@@ -69,9 +71,6 @@ public class space {
 
                 StdDraw.show();
             }
-
-
-
 
 
         }
